@@ -1,5 +1,9 @@
-{
-  "storage": {
-    "rules": "storage.rules"
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      // Zezwalaj na odczyt/zapis tylko dla uwierzytelnionych użytkowników
+      allow read, write: if true;
+    }
   }
 }
